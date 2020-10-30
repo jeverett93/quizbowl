@@ -2,6 +2,9 @@ let startButton = document.getElementById("start-button");
 startButton.addEventListener("click", startQuiz)
 let quizContainer = document.getElementById("quiz-container");
 
+let score = 0
+const savedArray = JSON.parse(localStorage.getItem("score")) || [];
+
 let questionNum = 0;
 let quiz_data= [
     {
