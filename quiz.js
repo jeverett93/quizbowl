@@ -179,3 +179,22 @@ function renderQuestion() {
   <h1>${quiz_data[questionNum].question}</h1>
   ${buttons.join("")}`
 }
+
+function answerQuestion(answer) {
+  if (answer === quiz_data[questionNum].correct) {
+    score ++;
+    alert("Correct!")
+  }
+  else {
+    alert(`Incorrect, the answer was ${quiz_data[questionNum].correct}`)
+  }
+
+  questionNum ++;
+
+  if (questionNum === quiz_data.length) {
+    endQuiz()
+  } else {
+    renderQuestion()
+  }
+}
+
