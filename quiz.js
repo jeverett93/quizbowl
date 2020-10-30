@@ -182,19 +182,40 @@ function renderQuestion() {
 
 function answerQuestion(answer) {
   if (answer === quiz_data[questionNum].correct) {
-    score ++;
+    score++;
     alert("Correct!")
   }
   else {
     alert(`Incorrect, the answer was ${quiz_data[questionNum].correct}`)
   }
 
-  questionNum ++;
+  questionNum++;
 
   if (questionNum === quiz_data.length) {
     endQuiz()
   } else {
     renderQuestion()
   }
+}
+
+function endQuiz() {
+  let newBtn = document.createElement("button");
+  let newHead = document.createElement("h4");
+  newBtn.innerText = "Submit";
+  newHead.innerHTML = "Your score is " + score;
+
+  // newBtn.addEventListener("click", () => {
+  //   // scoreKeep.push(score);
+  //   var userNameVal = document.getElementById("userInput").value;
+  //   // scoreKeep.push(userNameVal);
+
+  //   savedArray.push("Name: " + userNameVal + "  Score: " + score);
+  //   alert(userNameVal);
+  //   highScores();
+  // });
+
+  quizContainer.innerHTML = "";
+  quizContainer.appendChild(newHead);
+  quizContainer.appendChild(newBtn);
 }
 
