@@ -10,7 +10,7 @@ let quiz_data= [
      " id": 2,
       "question": "In Shakespeare's play Julius Caesar, Caesar's last words were...",
       "choices": ["Iacta alea est!", "Vidi, vini, vici", "Aegri somnia vana", "Et tu, Brute?"],
-      "incorrect": ["Iacta alea est!", "Vidi, vini, vici", "Aegri somnia vana"],
+      "incorrect": ["Iacta alea est!", "Vidi, vini, vici", "Aegri somnia vana"], 
       "correct": "Et tu, Brute?"
     },
     {
