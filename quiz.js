@@ -191,7 +191,7 @@ function answerQuestion(answer) {
 
   questionNum++;
 
-  if (questionNum === quiz_data.length) {
+  if (questionNum === (quiz_data.length - 11)) {
     endQuiz()
   } else {
     renderQuestion()
@@ -201,18 +201,18 @@ function answerQuestion(answer) {
 function endQuiz() {
   let newBtn = document.createElement("button");
   let newHead = document.createElement("h4");
-  newBtn.innerText = "Submit";
+  newBtn.innerText = "Another Round?";
   newHead.innerHTML = "Your score is " + score;
 
-  // newBtn.addEventListener("click", () => {
-  //   // scoreKeep.push(score);
-  //   var userNameVal = document.getElementById("userInput").value;
-  //   // scoreKeep.push(userNameVal);
-
+  newBtn.addEventListener("click", () => {
+    // scoreKeep.push(score);
+    // var userNameVal = document.getElementById("userInput").value;
+    // scoreKeep.push(userNameVal);
+    startQuiz()
   //   savedArray.push("Name: " + userNameVal + "  Score: " + score);
   //   alert(userNameVal);
   //   highScores();
-  // });
+  });
 
   quizContainer.innerHTML = "";
   quizContainer.appendChild(newHead);
