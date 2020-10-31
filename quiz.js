@@ -6,6 +6,7 @@ let score = 0
 const savedArray = JSON.parse(localStorage.getItem("score")) || [];
 
 let questionNum = 0;
+// let questionNum = Math.floor(Math.random() * 21)
 let quiz_data = [
   {
     question: "What was Tandem previous name?",
@@ -69,7 +70,6 @@ let quiz_data = [
     correct: "Paris"
   },
   {
-    id: 13,
     question: "Where would you find the Sea of Tranquility?",
     choices: ["California", "Siberia", "China", "The Moon"],
     correct: "The Moon"
@@ -92,7 +92,6 @@ let quiz_data = [
   {
     question: "What is the national animal of Scotland?",
     choices: ["Bear", "Rabbit", "Seal", "Unicorn"],
-    incorrect: ["Bear", "Rabbit", "Seal"],
     correct: "Unicorn"
   },
   {
@@ -110,17 +109,16 @@ let quiz_data = [
     choices: ["$0.25", "$1", "$5", "$0.05"],
     correct: "$0.05"
   },
-  // {
-  //   id: 21,
-  //   question: "The Vatican bank has the only ATM in the world that allows users to do what?",
-  //   choices: [
-  //     "Receive withdrawls in rosary beads",
-  //     "Vote for the Pope",
-  //     "Purchase indulgences",
-  //     "Perform transactions in Latin"
-  //   ],
-  //   correct: "Perform transactions in Latin"
-  // }
+  {
+    question: "The Vatican bank has the only ATM in the world that allows users to do what?",
+    choices: [
+      "Receive withdrawls in rosary beads",
+      "Vote for the Pope",
+      "Purchase indulgences",
+      "Perform transactions in Latin"
+    ],
+    correct: "Perform transactions in Latin"
+  }
 ]
 
 function startQuiz() {
@@ -154,7 +152,7 @@ function answerQuestion(answer) {
   }
 
   questionNum++;
-
+  
   if (questionNum === (quiz_data.length - 10)) {
     endQuiz()
   } 
