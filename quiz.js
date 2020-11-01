@@ -152,8 +152,11 @@ const answerQuestion = (answer) => {
 const endRoundOne = () => {
   let newBtn = document.createElement("button");
   let newHead = document.createElement("h4");
+  newBtn.style.cssText = "color: white; background-color: #007bff; border-color: #007bff"
+  newHead.style.cssText = "color: white"
   newBtn.innerText = "Next Round?";
   newHead.innerHTML = "Your current score is " + score;
+  
 
   newBtn.addEventListener("click", () => {
     startQuiz()
@@ -166,6 +169,7 @@ const endRoundOne = () => {
 
 const endQuiz = () => {
   let newHead = document.createElement("h4");
+  newHead.style.cssText = "color: white"
   newHead.innerHTML = "Your total score is " + score;
 
   quizContainer.innerHTML = "";
