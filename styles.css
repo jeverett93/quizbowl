@@ -6,3 +6,11 @@ body {
     background-color:#5774c4!important;
     text-align: center;
 }
+
+.btn {
+    color: white!important;
+}
+
+.reset-btn {
+    margin-top: 50px;
+}

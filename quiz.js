@@ -3,13 +3,11 @@ startButton.addEventListener("click", startQuiz)
 let quizContainer = document.getElementById("quiz-container");
 
 let score = 0
-const savedArray = JSON.parse(localStorage.getItem("score")) || [];
-
 let questionNum = 0;
-// let questionNum = Math.floor(Math.random() * 21)
-let quiz_data = [
+
+const quiz_data = [
   {
-    question: "What was Tandem previous name?",
+    question: "What was Tandem's previous name?",
     choices: ["Tandem", "Burger Shack", "Extraordinary Humans", "Devmynd"],
     correct: "Devmynd"
   },
@@ -108,44 +106,28 @@ let quiz_data = [
     question: "How much does a US One Dollar Bill cost to make?",
     choices: ["$0.25", "$1", "$5", "$0.05"],
     correct: "$0.05"
-  },
-  {
-    question: "The Vatican bank has the only ATM in the world that allows users to do what?",
-    choices: [
-      "Receive withdrawls in rosary beads",
-      "Vote for the Pope",
-      "Purchase indulgences",
-      "Perform transactions in Latin"
-    ],
-    correct: "Perform transactions in Latin"
   }
 ]
 
-function startQuiz() {
+
+const startQuiz = () => {
   renderQuestion()
 }
 
-// function getRandom() {
-//   let random = Math.floor(Math.random() * quiz_data.length)
-//   return random 
-// }
-
-function renderQuestion() {
-  // let randomq = getRandom()
-
+const renderQuestion = () => {
   let buttons = quiz_data[questionNum].choices.map(function (answer) {
-    return `<button onclick="answerQuestion('${answer}')" >${answer}</button>`
+    return `<button style="margin: 20px" class=btn-primary onclick="answerQuestion('${answer}')" >${answer}</button>`
   })
 
   quizContainer.innerHTML = `
-  <h1>${quiz_data[questionNum].question}</h1>
+  <h1 style="color: white">${quiz_data[questionNum].question}</h1>
   ${buttons.join("")}`
 }
 
-function answerQuestion(answer) {
+const answerQuestion = (answer) => {
   if (answer === quiz_data[questionNum].correct) {
     score++;
-    alert("Correct!")
+    alert(`Correct! The answer was ${quiz_data[questionNum].correct}`)
   }
   else {
     alert(`Incorrect, the answer was ${quiz_data[questionNum].correct}`)
@@ -154,9 +136,9 @@ function answerQuestion(answer) {
   questionNum++;
   
   if (questionNum === (quiz_data.length - 10)) {
-    endQuiz()
+    endRoundOne()
   } 
-  else if (questionNum === quiz_data.length) {
+  else if (questionNum === (quiz_data.length)) {
     endQuiz()
   }
   else {
@@ -164,16 +146,24 @@ function answerQuestion(answer) {
   }
 }
 
-function endQuiz() {
+const endRoundOne = () => {
   let newBtn = document.createElement("button");
   let newHead = document.createElement("h4");
-  newBtn.innerText = "Another Round?";
-  newHead.innerHTML = "Your score is " + score;
+  newBtn.innerText = "Next Round?";
+  newHead.innerHTML = "Your current score is " + score;
 
   newBtn.addEventListener("click", () => {
     startQuiz()
-    score = 0
   });
+
+  quizContainer.innerHTML = "";
+  quizContainer.appendChild(newHead);
+  quizContainer.appendChild(newBtn);
+}
+
+const endQuiz = () => {
+  let newHead = document.createElement("h4");
+  newHead.innerHTML = "Your total score is " + score;
 
   quizContainer.innerHTML = "";
   quizContainer.appendChild(newHead);
