@@ -1,7 +1,9 @@
+// grabbing id elements
 let startButton = document.getElementById("start-button");
 startButton.addEventListener("click", startQuiz)
 let quizContainer = document.getElementById("quiz-container");
 
+// global variables that track score, question number and the questions themselves
 let score = 0
 let questionNum = 0;
 
@@ -110,7 +112,7 @@ const quiz_data = [
 ]
 
 
-const startQuiz = () => {
+function startQuiz() {
   renderQuestion()
 }
 
@@ -124,6 +126,7 @@ const renderQuestion = () => {
   ${buttons.join("")}`
 }
 
+// increments score based on if it's correct or not & ends quiz round based on user progression
 const answerQuestion = (answer) => {
   if (answer === quiz_data[questionNum].correct) {
     score++;
